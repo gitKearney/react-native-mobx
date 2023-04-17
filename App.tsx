@@ -26,8 +26,7 @@ const App = (): JSX.Element => {
     const _getItems = (): void => {
       apiGetItems()
         .then((res: any) => {
-          console.log('getting items...again?');
-          rootStore.itemStore.setItems(res);
+          rootStore.itemStore.storeItems = res;
         })
         .catch((err: Error) => {
           console.log('whoops!', err);
@@ -43,6 +42,7 @@ const App = (): JSX.Element => {
         <View style={styles.item}>
           <ShoppingCart />
         </View>
+
         <View style={styles.item}>
           <ItemList />
         </View>

@@ -18,8 +18,7 @@ export interface RootStoreShape {
 
 export interface ItemStoreShape {
   items: ItemShape[];
-  setItems: (vals: ItemShape[]) => void;
-  getItems: () => ItemShape[];
+  storeItems: ItemShape[];
   removeItem: (index: number) => void;
   addItem: (index: number) => void;
 }

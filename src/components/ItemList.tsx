@@ -1,9 +1,9 @@
 import React from 'react';
 import {ItemShape, type RootStoreShape} from '../interfaces';
 import {observer} from 'mobx-react-lite';
+import {Button, FlatList, Text} from 'react-native';
 
 import {rootStore} from '../../App';
-import {Button, FlatList, Text} from 'react-native';
 
 export const ItemList = observer((): JSX.Element => {
   const {itemStore, cartStore}: RootStoreShape = rootStore;
@@ -13,8 +13,8 @@ export const ItemList = observer((): JSX.Element => {
     cartStore.addItem(itemIndex, itemTitle);
   };
 
-  const renderItemsNative = (): JSX.Element => {
-    if (itemStore.items.length === 0) {
+  const renderItemsNative = (itemItems: ItemShape[]): JSX.Element => {
+    if (itemItems.length === 0) {
       return <></>;
     }
 
@@ -36,10 +36,12 @@ export const ItemList = observer((): JSX.Element => {
     );
   };
 
+  // console.log('[ITEMLIST]', itemStore.items);
+
   return (
     <>
       <Text>Item List</Text>
-      {renderItemsNative()}
+      {renderItemsNative(itemStore.items)}
     </>
   );
 });
